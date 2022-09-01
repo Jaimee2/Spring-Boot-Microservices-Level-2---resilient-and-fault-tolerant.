@@ -29,7 +29,8 @@ public class MovieCatalogResource {
          * 1. Petición al servidor Rating data service con la clave userId
          * 2. Obtenemos un objeto tipo UserRAting - List<rating> del userId
          **/
-        UserRating userRating = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/" + userId, UserRating.class);
+        //UserRating userRating = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/" + userId, UserRating.class);
+        UserRating userRating = restTemplate.getForObject("http://rating-data-service/ratingsdata/users/" + userId, UserRating.class);
 
 
         /**
@@ -45,7 +46,7 @@ public class MovieCatalogResource {
          **/
         return userRating.getUserRating().stream()
                 .map(rating -> {
-                    Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(),Movie.class);
+                    Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(),Movie.class);
                     return new CatalogItem(movie.getName(),"description of movieId --> " + rating.getMovieId(),rating.getRating());
                 }).collect(Collectors.toList());//Generamos una listta
 

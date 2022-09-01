@@ -1,4 +1,7 @@
 # Spring-Boot-Microservices-Level-2---resilient-and-fault-tolerant.
+
+https://www.youtube.com/watch?v=o8RO38KbWvA&list=PLqq-6Pq4lTTbXZY_elyGv7IkKrfkSrX5e&ab_channel=JavaBrains
+
 Spring Boot Microservices Level 2 - resilient and fault tolerant.
 
 

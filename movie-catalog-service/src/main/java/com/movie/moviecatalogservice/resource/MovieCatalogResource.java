@@ -2,17 +2,14 @@ package com.movie.moviecatalogservice.resource;
 
 import com.movie.moviecatalogservice.models.CatalogItem;
 import com.movie.moviecatalogservice.models.Movie;
-import com.movie.moviecatalogservice.models.Rating;
-import com.sun.org.apache.xml.internal.resolver.Catalog;
+import com.movie.moviecatalogservice.models.UserRating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,12 +24,13 @@ public class MovieCatalogResource {
     @RequestMapping(value = "/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
 
-        //Get all rated movie IDs
-        List<Rating> ratings = Arrays.asList(
-                new Rating("1234", 4),
-                new Rating("5678",3),
-                new Rating("1234", 1)
-        );
+
+        /**
+         * 1. Petición al servidor Rating data service con la clave userId
+         * 2. Obtenemos un objeto tipo UserRAting - List<rating> del userId
+         **/
+        UserRating userRating = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/" + userId, UserRating.class);
+
 
         /**
          * 1. Recorremos los elementos de la lista ratings que se supone que viene del servicio: rating data service
@@ -45,7 +43,7 @@ public class MovieCatalogResource {
          *                                                        - descrip --> ponemos la descp que queramos
          *                                                        - rating --> rating.getRating()
          **/
-        return ratings.stream()
+        return userRating.getUserRating().stream()
                 .map(rating -> {
                     Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(),Movie.class);
                     return new CatalogItem(movie.getName(),"description of movieId --> " + rating.getMovieId(),rating.getRating());

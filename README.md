@@ -22,11 +22,14 @@ Spring Boot Microservices Level 2 - resilient and fault tolerant.
 
 #### Solución: implementar pattern Circuit breaker ---> Framework Hystrix
 
+
 ![image](https://user-images.githubusercontent.com/52107919/188104199-8c5dca76-7b72-4f86-bdba-8a18e4523aa8.png)
 
 
 
 ## Framework Hystrix
+
+![image](https://user-images.githubusercontent.com/52107919/188109604-ef720161-15c2-4745-b861-50bed5b152c1.png)
 
 Hystrix implementa el patron Circuit breaker siguiendos los pasos:
 

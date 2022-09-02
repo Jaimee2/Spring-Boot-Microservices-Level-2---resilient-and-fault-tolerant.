@@ -36,10 +36,12 @@ EN EL TUTORIAL SE UTLIZA Hystrix QUE ESTÁ EN DESUSO.
 #### application.yml
 ![image](https://user-images.githubusercontent.com/52107919/188126224-a6edca76-aecb-4ac9-879a-3b2bc2be4cae.png)
 
+#### Implementación:
 
-Hystrix implementa el patron Circuit breaker siguiendos los pasos:
+![image](https://user-images.githubusercontent.com/52107919/188126964-3f31c8e0-8893-4f3b-be89-1106691f5a12.png)
 
-![image](https://user-images.githubusercontent.com/52107919/188109253-9ebfcee7-e8a7-4486-a8c2-935ba74e0fb2.png)
+![image](https://user-images.githubusercontent.com/52107919/188127187-2bc4056f-1622-411d-9150-79f509f703db.png)
+
 
 
 

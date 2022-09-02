@@ -20,14 +20,19 @@ Spring Boot Microservices Level 2 - resilient and fault tolerant.
 
 ![image](https://user-images.githubusercontent.com/52107919/188094019-adfd21b8-0f58-4512-98fd-fdad0215685f.png)
 
-#### Solución: implementar pattern Circuit breaker ---> Framework Hystrix
+#### Solución: implementar pattern Circuit breaker ---> Framework resilience4j
 
 
 ![image](https://user-images.githubusercontent.com/52107919/188104199-8c5dca76-7b72-4f86-bdba-8a18e4523aa8.png)
 
+EN EL TUTORIAL SE UTLIZA Hystrix QUE ESTÁ EN DESUSO.
 
+## Framework resilience4j
 
-## Framework Hystrix
+### Configuración
+
+#### application.yml
+![image](https://user-images.githubusercontent.com/52107919/188126224-a6edca76-aecb-4ac9-879a-3b2bc2be4cae.png)
 
 ![image](https://user-images.githubusercontent.com/52107919/188109604-ef720161-15c2-4745-b861-50bed5b152c1.png)
 

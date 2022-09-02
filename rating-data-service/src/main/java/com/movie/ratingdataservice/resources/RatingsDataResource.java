@@ -24,9 +24,9 @@ public class RatingsDataResource {
         public UserRating getUserRating(@PathVariable("userId") String userId){
             //Get all rated movie IDs
             List<Rating> ratings = Arrays.asList(
-                    new Rating("1234", 4),
-                    new Rating("5678",3),
-                    new Rating("1234", 1)
+                    new Rating("550", 4),
+                    new Rating("550",3),
+                    new Rating("550", 1)
             );
             //Esto lo hacemos para devolver un objeto en vez de una lista de objetos
             UserRating userRating = new UserRating(ratings);

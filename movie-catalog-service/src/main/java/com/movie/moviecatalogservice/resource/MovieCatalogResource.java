@@ -3,6 +3,8 @@ package com.movie.moviecatalogservice.resource;
 import com.movie.moviecatalogservice.models.CatalogItem;
 import com.movie.moviecatalogservice.models.Movie;
 import com.movie.moviecatalogservice.models.UserRating;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +25,7 @@ public class MovieCatalogResource {
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "/{userId}")
+    @CircuitBreaker(name = "prueba",fallbackMethod = "getFallbackCatalog")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
 
 
@@ -30,6 +34,7 @@ public class MovieCatalogResource {
          * 2. Obtenemos un objeto tipo UserRAting - List<rating> del userId
          **/
         //UserRating userRating = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/" + userId, UserRating.class);
+        System.out.println("http://rating-data-service/ratingsdata/users/" + userId);
         UserRating userRating = restTemplate.getForObject("http://rating-data-service/ratingsdata/users/" + userId, UserRating.class);
 
 
@@ -50,15 +55,9 @@ public class MovieCatalogResource {
                     return new CatalogItem(movie.getName(),"description of movieId --> " + rating.getMovieId(),rating.getRating());
                 }).collect(Collectors.toList());//Generamos una listta
 
-
-        //For each moiveId, call movie info service and gets details
-
-        //Put them all together
-
-
-
-       /* return Collections.singletonList(
-                new CatalogItem("Transfomer","test",4)
-        );*/
+    }
+    //Si existe un circuito cerrado entramos aquí
+    public List<CatalogItem> getFallbackCatalog(Exception e){
+        return Arrays.asList(new CatalogItem("no movie", "", 0));
     }
 }

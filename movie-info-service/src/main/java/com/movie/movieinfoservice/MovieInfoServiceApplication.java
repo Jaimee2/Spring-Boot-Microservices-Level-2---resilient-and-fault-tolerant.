@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.reactive.HttpComponentsClientHttpConnector;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -19,7 +21,11 @@ public class MovieInfoServiceApplication {
 	 **/
 	@Bean
 	@LoadBalanced //Para implementar server - discovery
-	public RestTemplate getRestTemplate() {return new RestTemplate();}
+	public RestTemplate getRestTemplate() {
+		HttpComponentsClientHttpRequestFactory componentsClientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+		componentsClientHttpRequestFactory.setConnectionRequestTimeout(3000); //3 segundos
+		return new RestTemplate(componentsClientHttpRequestFactory);
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(MovieInfoServiceApplication.class, args);
 		System.out.println("Service Movie info Servide RUN");

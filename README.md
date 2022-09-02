@@ -29,12 +29,13 @@ EN EL TUTORIAL SE UTLIZA Hystrix QUE ESTÁ EN DESUSO.
 
 ## Framework resilience4j
 
+![image](https://user-images.githubusercontent.com/52107919/188126774-f0bae312-35e5-49bb-b87f-bc77d9f663d0.png)
+
 ### Configuración
 
 #### application.yml
 ![image](https://user-images.githubusercontent.com/52107919/188126224-a6edca76-aecb-4ac9-879a-3b2bc2be4cae.png)
 
-![image](https://user-images.githubusercontent.com/52107919/188109604-ef720161-15c2-4745-b861-50bed5b152c1.png)
 
 Hystrix implementa el patron Circuit breaker siguiendos los pasos:
 

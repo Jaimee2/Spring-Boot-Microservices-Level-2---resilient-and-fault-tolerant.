@@ -7,7 +7,7 @@ Spring Boot Microservices Level 2 - resilient and fault tolerant.
 
 ![api externa](https://user-images.githubusercontent.com/52107919/187950397-c35f37fb-841f-4b0f-a723-8027d5ff59a9.png)
 
-## Problemas tipicos
+## Problemas típicos
 
 ### Problema 1: Instancia de un micro-servicio no funciona.
 
@@ -20,9 +20,18 @@ Spring Boot Microservices Level 2 - resilient and fault tolerant.
 
 ![image](https://user-images.githubusercontent.com/52107919/188094019-adfd21b8-0f58-4512-98fd-fdad0215685f.png)
 
-#### Solución: configurar TimeOut en Spring RestTemplate
+#### Solución: implementar pattern Circuit breaker ---> Framework Hystrix
 
-![image](https://user-images.githubusercontent.com/52107919/188096237-683540ac-af3a-4b70-91d9-a382c09213d6.png)
+![image](https://user-images.githubusercontent.com/52107919/188104199-8c5dca76-7b72-4f86-bdba-8a18e4523aa8.png)
+
+
+
+## Framework Hystrix
+
+Hystrix implementa el patron Circuit breaker siguiendos los pasos:
+
+![image](https://user-images.githubusercontent.com/52107919/188109253-9ebfcee7-e8a7-4486-a8c2-935ba74e0fb2.png)
+
 
 
 
